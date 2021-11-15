@@ -229,7 +229,7 @@ func initAsset() {
 						"qq", "tg", "wx",
 					} {
 						core.Bucket("pin" + strings.ToUpper(tp)).Foreach(func(k, v []byte) error {
-							if string(k) == pt_pin && pt_pin != "" {
+							if string(k) == pt_pin && pt_pin != "" && string(v) != "" {
 								if push, ok := core.Pushs[tp]; ok {
 									time.Sleep(time.Second)
 									push(string(v), GetAsset(&JdCookie{
